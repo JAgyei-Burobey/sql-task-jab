@@ -22,27 +22,6 @@ SELECT * FROM actor WHERE last_name = 'NEESON';
 4. Find all actors with ID numbers divisible by 10.
 SELECT * FROM actor WHERE MOD(actor_id,10)=0;
 -- Output displays every id divided by 10 with a remainder equal to 0.
--- The actor names are 
-10	CHRISTIAN	GABLE
-20	LUCILLE		TRACY
-30	SANDRA		PECK
-40	JOHNNY		CAGE
-50	NATALIE		HOPKINS
-60	HENRY		BERRY
-70	MICHELLE	MCCONAUGHEY
-80	RALPH		CRUZ
-90	SEAN		GUINESS
-100	SPENCER		DEPP
-110	SUSAN		DAVIS
-120	PENELOPE	MONROE
-130	GRETA		KEITEL
-140	WHOOPI		HURT
-150	JAYNE		NOLTE
-160	CHRIS		DEPP
-170	MENA		HOPPER
-180	JEFF		SILVERSTONE
-190	AUDREY		BAILEY
-200	THORA		TEMPLE
 
 
 5. What is the description of the movie with an ID of 100?
@@ -50,8 +29,54 @@ SELECT description FROM film where film_id = 100
 -- Output shows the description of the film with an id of 100.
 -- The description is 'A Beautiful Drama of a Dentist And a Composer who must Battle a Sumo Wrestler in The First Manned Space Station'
 
-
-
+______________
 I had the idea of how to do number 4, but I had to google the code. 
 I knew that I needed to find a way to separate every 10th id, and this line of code does it well.
 However, the output only stays correct so long as there are no gaps in the numbering/no rows have been deleted.
+______________
+
+
+6. Find every R-rated movie.
+SELECT * FROM film WHERE rating = 'R'
+-- Output displays every row in film where the rating is 'R'.
+
+
+7. Find every non-R-rated movie.
+SELECT * FROM film WHERE rating != 'R'
+-- Output displays every row in film where the rating is not 'R'.
+
+
+8. Find the ten shortest movies.
+SELECT * FROM film ORDER BY length ASC LIMIT 10;
+-- Output displays 10 rows with the smallest (shortest) length in film in ascending order.
+
+
+9. Find the movies with the longest runtime, without using LIMIT.
+SELECT * FROM film WHERE length = 185
+-- Output displays every row in film where length = 185 (max value in length in 185)
+
+
+10. Find all movies that have deleted scenes.
+SELECT * FROM film WHERE special_features LIKE '%Deleted Scenes'
+-- Output displays every row in film which has '%Deleted Scenes' in the special_features column.
+
+
+___________________
+I had a LOT of trouble with #9. 
+I thought the MAX() function is used to identify the rows with the highest value in a column.
+But I couldn't get that to work.
+So I listed every row in descending order of length.
+Then I identified the highest value was 185.
+So I simply found each row with length equal to 185.
+____________________
+
+
+
+
+
+
+
+
+
+
+
